@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -20,33 +21,26 @@ public class CommonInvoke {
      * <strong>目前该方法不支持重载的方法在一个调用列表内出现多个重载体</strong>
      * <p>Example:
      * <blockquote><pre>
-     * Map&lt;String, Class&lt;?&gt;[]&gt; methodParamTypeMap = new HashMap&lt;&gt;();
-     *
-     * methodParamTypeMap.put("sum",
-     *         new Class&lt;?&gt;[]{int.class, int.class});
-     *
-     * methodParamTypeMap.put("Adder",
-     *         new Class&lt;?&gt;[0]);
-     *
      * Object[] result = CommonInvoke.listInvoke(
-     *         ParallelAdder.class,
-     *         "[Adder, add, add, add]",
-     *         "[[], [10, 20], [15, 25], [20, 30]]",
-     *         Adder.class, methodParamTypeMap);
+     *                Adder.class, ParallelAdder.class,
+     *                "[Adder, add, add, add]",
+     *                "[[], [10, 20], [15, 25], [20, 30]]");
      *
      * // result:[null, true, true, true]
      * </blockquote></pre>
      *
+     * @param abstractClazz            invokeStrArrayStr对应的抽象类。如果是普通类，与implClazz保持一致即可
      * @param implClazz                需要实例化并调用方法的类 如果希望调用的类是接口，则此处为实现类的类
      * @param invokeStrArrayStr        调用列表，其中出现的interfaceClazz类名意味着调用构造方法
      * @param paramStrArrayStrArrayStr 调用列表对应的参数列表
-     * @param interfaceClazz           如果希望调用的类是接口，则此处为接口名。如果是普通类，则与implClazz保持一致
-     * @param methodParamTypeMap       调用列表中各种方法对应的参数类型，需要在该Map中注册
      * @return 调用结果
      */
-    public static Object[] listInvoke(Class<?> implClazz, String invokeStrArrayStr, String paramStrArrayStrArrayStr, Class<?> interfaceClazz, Map<String, Class<?>[]> methodParamTypeMap) {
+    public static Object[] listInvoke(Class<?> abstractClazz, Class<?> implClazz, String invokeStrArrayStr, String paramStrArrayStrArrayStr) {
+        Map<String, Class<?>[]> methodParamTypeMap = new HashMap<>();
+        for (Method declaredMethod : abstractClazz.getDeclaredMethods())
+            methodParamTypeMap.put(declaredMethod.getName(), declaredMethod.getParameterTypes());
         Object target = null;
-        String[] invokeStrArray = CommonStr.parse2StringArray(invokeStrArrayStr.replace("\"", ""));
+        String[] invokeStrArray = CommonStr.parse2StringArray(invokeStrArrayStr.replace("\"", "").replace("\n", ""));
         /* 将该2D的ArrayString转为1D的Array，里面存的是string形式的Array*/
         String[] paramStrArrayStrArray = CommonStr.parseTwoDArrayString2OneDStringArray(paramStrArrayStrArrayStr);
 
@@ -57,13 +51,15 @@ public class CommonInvoke {
         try {
             for (int invokeStr_i = 0; invokeStr_i < invokeStrArray.length; invokeStr_i++) {
                 String invokeStr = invokeStrArray[invokeStr_i];
-                if (!methodParamTypeMap.containsKey(invokeStr))
-                    throw new RuntimeException("methodParamTypeMap里未注册该方法:" + invokeStr + "。 也可能是未正确设置接口类 当前接口类为" + interfaceClazz.getName());
-                Class<?>[] paramClazzArray = methodParamTypeMap.get(invokeStr);
-                if (paramClazzArray == null) throw new RuntimeException("无参是[]而非null,注意构造方法也需要注册");
+                Class<?>[] paramClazzArray;
+                if (methodParamTypeMap.containsKey(invokeStr))
+                    paramClazzArray = methodParamTypeMap.get(invokeStr);
+                else paramClazzArray = abstractClazz.getDeclaredConstructors()[0].getParameterTypes();
+                //TODO:目前强行限制一次调用链中的出现的构造方法相同且唯一
+                assert abstractClazz.getDeclaredConstructors().length == 1;
                 Object[] param = parseParam(paramStrArrayStrArray[invokeStr_i], paramClazzArray);
 
-                if (interfaceClazz.getSimpleName().equals(invokeStr)) {
+                if (abstractClazz.getSimpleName().equals(invokeStr)) {
                     Constructor<?> declaredConstructor = implClazz.getDeclaredConstructor(paramClazzArray);
                     declaredConstructor.setAccessible(true);
                     target = declaredConstructor.newInstance(param);
