@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  **/
 class MyCircularQueueTest {
     private static Stream<MyCircularQueue> implProvider() {
-        return Stream.of(new MyCircularQueue_ListNode(3));
+        return Stream.of(new MyCircularQueue_ListNode(1), new MyCircularQueue_Array(1));
     }
 
     @ParameterizedTest
@@ -38,6 +38,11 @@ class MyCircularQueueTest {
                 CommonInvoke.listInvoke(MyCircularQueue.class, impl.getClass(),
                         "[\"MyCircularQueue\",\"enQueue\",\"enQueue\"]",
                         "[[1],[1],[2]]"));
+
+        assertArrayEquals(new Object[]{null, true, true, true, true, true, true, false, false, 0, 0, true},
+                CommonInvoke.listInvoke(MyCircularQueue.class, impl.getClass(),
+                        "[\"MyCircularQueue\",\"enQueue\",\"enQueue\",\"enQueue\",\"enQueue\",\"deQueue\",\"deQueue\",\"isEmpty\",\"isEmpty\",\"Rear\",\"Rear\",\"deQueue\"]",
+                        "[[8],[3],[9],[5],[0],[],[],[],[],[],[],[]]"));
 
     }
 }
