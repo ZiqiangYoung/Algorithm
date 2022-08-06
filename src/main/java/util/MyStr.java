@@ -69,6 +69,15 @@ public class MyStr {
         return list.toArray(new int[0][]);
     }
 
+    public static List<List<Integer>> parseTwoDArrayString2TwoDIntegerList(String arrStr) {
+        String[] strings = parseTwoDArrayString2OneDStringArray(arrStr);
+        List<List<Integer>> ans = new ArrayList<>(strings.length);
+        for (String string : strings) {
+            ans.add(parse2IntegerList(string));
+        }
+        return ans;
+    }
+
     private static String formatArrayStr(String arrayStr) {
         arrayStr = arrayStr.replace(" ", "");
         if (!arrayStr.endsWith("]") || !arrayStr.startsWith("["))
