@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
  **/
 class SolutionTest {
     private static Stream<Solution> implProvider() {
-        return Stream.of(new DP());
+        return Stream.of(new DP(), new Mathematics());
     }
 
     @ParameterizedTest
