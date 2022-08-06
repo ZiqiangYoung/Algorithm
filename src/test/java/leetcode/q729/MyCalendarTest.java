@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import util.CommonInvoke;
+import util.MyInvoke;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,31 +25,31 @@ class MyCalendarTest {
     void implTest(MyCalendar impl) {
         assertArrayEquals(
                 new Object[]{null, true, false, true},
-                CommonInvoke.listInvoke(MyCalendar.class, impl.getClass(),
+                MyInvoke.listInvoke(MyCalendar.class, impl.getClass(),
                         "[\"MyCalendar\", \"book\", \"book\", \"book\"]",
                         "[[], [10, 20], [15, 25], [20, 30]]"));
 
         assertArrayEquals(
                 new Object[]{null, true, false, true, false, false},
-                CommonInvoke.listInvoke(MyCalendar.class, impl.getClass(),
+                MyInvoke.listInvoke(MyCalendar.class, impl.getClass(),
                         "[\"MyCalendar\",\"book\",\"book\",\"book\",\"book\",\"book\"]",
                         "[[],[37,50],[33,50],[4,17],[35,48],[8,25]]"));
 
         assertArrayEquals(
                 new Object[]{null, true, true, false, false, true, false, true, true, true, false},
-                CommonInvoke.listInvoke(MyCalendar.class, impl.getClass(),
+                MyInvoke.listInvoke(MyCalendar.class, impl.getClass(),
                         "[\"MyCalendar\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\"]",
                         "[[],[47,50],[33,41],[39,45],[33,42],[25,32],[26,35],[19,25],[3,8],[8,13],[18,27]]"));
 
         assertArrayEquals(
                 new Object[]{null, true, false, true, true, false, true, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false},
-                CommonInvoke.listInvoke(MyCalendar.class, impl.getClass(),
+                MyInvoke.listInvoke(MyCalendar.class, impl.getClass(),
                         "[\"MyCalendar\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\"]",
                         "[[],[20,29],[13,22],[44,50],[1,7],[2,10],[14,20],[19,25],[36,42],[45,50],[47,50],[39,45],[44,50],[16,25],[45,50],[45,50],[12,20],[21,29],[11,20],[12,17],[34,40],[10,18],[38,44],[23,32],[38,44],[15,20],[27,33],[34,42],[44,50],[35,40],[24,31]]"));
 
         assertArrayEquals(
                 new Object[]{null, true, true, false, false, true, false, true, true, false, false, false, false, false, false, false, false, false, false, false, true},
-                CommonInvoke.listInvoke(MyCalendar.class, impl.getClass(),
+                MyInvoke.listInvoke(MyCalendar.class, impl.getClass(),
                         "[\"MyCalendar\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\",\"book\"]",
                         "[[],[97,100],[33,51],[89,100],[83,100],[75,92],[76,95],[19,30],[53,63],[8,23],[18,37],[87,100],[83,100],[54,67],[35,48],[58,75],[70,89],[13,32],[44,63],[51,62],[2,15]]"));
     }

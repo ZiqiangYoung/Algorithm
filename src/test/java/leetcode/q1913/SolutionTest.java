@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import util.CommonStr;
+import util.MyStr;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,8 +23,8 @@ class SolutionTest {
     @ParameterizedTest
     @MethodSource("implProvider")
     void implTest(Solution impl) {
-        assertEquals(34, impl.maxProductDifference(CommonStr.parse2IntArray("[5,6,2,7,4]")));
-        assertEquals(64, impl.maxProductDifference(CommonStr.parse2IntArray("[4,2,5,9,7,4,8]")));
+        assertEquals(34, impl.maxProductDifference(MyStr.parse2IntArray("[5,6,2,7,4]")));
+        assertEquals(64, impl.maxProductDifference(MyStr.parse2IntArray("[4,2,5,9,7,4,8]")));
     }
 
 }

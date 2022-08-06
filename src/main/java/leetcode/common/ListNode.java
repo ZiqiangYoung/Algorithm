@@ -1,6 +1,6 @@
 package leetcode.common;
 
-import util.CommonStr;
+import util.MyStr;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class ListNode {
     }
 
     private static ListNode[] arrString2ListNodeArray(String arrayStr) {
-        Integer[] integers = CommonStr.parse2IntegerArray(arrayStr);
+        Integer[] integers = MyStr.parse2IntegerArray(arrayStr);
         ListNode[] listNodes = new ListNode[integers.length];
         for (int i = 0; i < integers.length; i++) {
             if (integers[i] != null) {

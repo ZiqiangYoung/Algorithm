@@ -10,9 +10,9 @@ import java.io.InputStream;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class CommonIO {
+public class MyIO {
     public static String readResourceAsString(String resourcePath) {
-        try (InputStream inputStream = CommonIO.class.getResourceAsStream(resourcePath)) {
+        try (InputStream inputStream = MyIO.class.getResourceAsStream(resourcePath)) {
             assert inputStream != null;
             return new String(inputStream.readAllBytes());
         } catch (IOException e) {

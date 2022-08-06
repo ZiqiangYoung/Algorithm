@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 import leetcode.common.TreeNode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import util.CommonStr;
+import util.MyStr;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,13 +24,13 @@ class SolutionTest {
     @ParameterizedTest
     @MethodSource("implProvider")
     void implTest(Solution impl) {
-        assertArrayEquals(CommonStr.parse2IntegerArray("[4,1,1,2,null,null,6,3,1,5]"),
+        assertArrayEquals(MyStr.parse2IntegerArray("[4,1,1,2,null,null,6,3,1,5]"),
                 TreeNode.leetcodeOutput(impl.addOneRow(
                         TreeNode.leetcodeInput("[4,2,6,3,1,5]"), 1, 2)));
-        assertArrayEquals(CommonStr.parse2IntegerArray("[4,2,null,1,1,3,null,null,1]"),
+        assertArrayEquals(MyStr.parse2IntegerArray("[4,2,null,1,1,3,null,null,1]"),
                 TreeNode.leetcodeOutput(impl.addOneRow(
                         TreeNode.leetcodeInput("[4,2,null,3,1]"), 1, 3)));
-        assertArrayEquals(CommonStr.parse2IntegerArray("[1,4,null,2,null,3,1]"),
+        assertArrayEquals(MyStr.parse2IntegerArray("[1,4,null,2,null,3,1]"),
                 TreeNode.leetcodeOutput(impl.addOneRow(
                         TreeNode.leetcodeInput("[4,2,null,3,1]"), 1, 1)));
     }

@@ -1,9 +1,6 @@
 package util;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * <strong>TODO:Class Doc required</strong>
@@ -12,17 +9,13 @@ import java.util.List;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class CommonStr {
+public class MyStr {
     public static int[] parse2IntArray(String arrayStr) {
-        arrayStr = formatArrayStr(arrayStr);
-        if ("".equals(arrayStr) || "null".equals(arrayStr)) return new int[0];
-        String[] split = arrayStr.split(",");
-        int[] array = new int[split.length];
-        for (int i = 0; i < split.length; i++) {
-            if ("null".equals(split[i])) throw new RuntimeException("int数组中不允许存在null");
-            array[i] = Integer.parseInt(split[i]);
+        try {
+            return Arrays.stream(parse2IntegerArray(arrayStr)).mapToInt(Integer::intValue).toArray();
+        } catch (NullPointerException e) {
+            throw new RuntimeException("字符串中含有 NULL,无法解析为 Int. ", e);
         }
-        return array;
     }
 
     public static Integer[] parse2IntegerArray(String arrayStr) {
@@ -38,16 +31,22 @@ public class CommonStr {
     }
 
     public static List<Integer> parse2IntegerList(String listStr) {
-        Integer[] integers = parse2IntegerArray(listStr);
-        List<Integer> list = new ArrayList<>();
-        Collections.addAll(list, integers);
-        return list;
+        return MyCollections.toArrayList(parse2IntegerArray(listStr));
     }
 
     public static String[] parse2StringArray(String arrayStr) {
         arrayStr = formatArrayStr(arrayStr);
         if ("".equals(arrayStr) || "null".equals(arrayStr)) return new String[0];
-        return arrayStr.split(",");
+        String[] strings = arrayStr.split(",");
+        /* 对于需要将该字符串数组转换为别的类型的使用者，每一项应当不会被双引号包裹，就不会被以下循环修改 */
+        for (int i = 0; i < strings.length; i++)
+            if (strings[i].startsWith("\"") && strings[i].endsWith("\""))
+                strings[i] = strings[i].substring(1, strings[i].length() - 1);
+        return strings;
+    }
+
+    public static List<String> parse2StringList(String arrayStr) {
+        return MyCollections.toArrayList(parse2StringArray(arrayStr));
     }
 
     public static String[] parseTwoDArrayString2OneDStringArray(String arrayStr) {

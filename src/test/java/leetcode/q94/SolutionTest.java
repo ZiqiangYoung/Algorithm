@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 import leetcode.common.TreeNode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import util.CommonStr;
+import util.MyStr;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -25,11 +25,11 @@ class SolutionTest {
     @MethodSource("implProvider")
     void implTest(Solution impl) {
         assertEquals(impl.inorderTraversal(TreeNode.leetcodeInput("[1,null,2,3]")),
-                CommonStr.parse2IntegerList("[1,3,2]"));
+                MyStr.parse2IntegerList("[1,3,2]"));
         assertEquals(impl.inorderTraversal(TreeNode.leetcodeInput("[]")),
-                CommonStr.parse2IntegerList("[]"));
+                MyStr.parse2IntegerList("[]"));
         assertEquals(impl.inorderTraversal(TreeNode.leetcodeInput("[1]")),
-                CommonStr.parse2IntegerList("[1]"));
+                MyStr.parse2IntegerList("[1]"));
     }
 
 }

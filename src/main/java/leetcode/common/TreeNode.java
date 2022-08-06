@@ -1,6 +1,6 @@
 package leetcode.common;
 
-import util.CommonStr;
+import util.MyStr;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -32,7 +32,7 @@ public class TreeNode {
     }
 
     public static TreeNode preOrderCreate(String arrayStr) {
-        Integer[] integers = CommonStr.parse2IntegerArray(arrayStr);
+        Integer[] integers = MyStr.parse2IntegerArray(arrayStr);
         synchronized (TreeNode.class) {
             return preOrderCreate(integers);
         }
@@ -51,7 +51,7 @@ public class TreeNode {
     }
 
     private static TreeNode[] arrString2TreeNodeArray(String arrayStr) {
-        Integer[] integers = CommonStr.parse2IntegerArray(arrayStr);
+        Integer[] integers = MyStr.parse2IntegerArray(arrayStr);
         TreeNode[] treeNodes = new TreeNode[integers.length];
         for (int i = 0; i < integers.length; i++) {
             if (integers[i] != null) {
@@ -62,7 +62,7 @@ public class TreeNode {
     }
 
     private static LinkedList<TreeNode> arrString2TreeNodeList(String arrayStr) {
-        Integer[] integers = CommonStr.parse2IntegerArray(arrayStr);
+        Integer[] integers = MyStr.parse2IntegerArray(arrayStr);
         LinkedList<TreeNode> treeNodes = new LinkedList<>();
         for (Integer integer : integers) {
             treeNodes.add(integer == null ? null : new TreeNode(integer));

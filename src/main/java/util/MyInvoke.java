@@ -14,7 +14,7 @@ import java.util.Map;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class CommonInvoke {
+public class MyInvoke {
     /**
      * <strong>按照列表内容链式调用方法</strong>
      * <br/>
@@ -40,9 +40,9 @@ public class CommonInvoke {
         for (Method declaredMethod : abstractClazz.getDeclaredMethods())
             methodParamTypeMap.put(declaredMethod.getName(), declaredMethod.getParameterTypes());
         Object target = null;
-        String[] invokeStrArray = CommonStr.parse2StringArray(invokeStrArrayStr.replace("\"", "").replace("\n", ""));
+        String[] invokeStrArray = MyStr.parse2StringArray(invokeStrArrayStr.replace("\"", "").replace("\n", ""));
         /* 将该2D的ArrayString转为1D的Array，里面存的是string形式的Array*/
-        String[] paramStrArrayStrArray = CommonStr.parseTwoDArrayString2OneDStringArray(paramStrArrayStrArrayStr);
+        String[] paramStrArrayStrArray = MyStr.parseTwoDArrayString2OneDStringArray(paramStrArrayStrArrayStr);
 
         if (invokeStrArray.length != paramStrArrayStrArray.length)
             throw new RuntimeException("invoke操作数量 和 param数组数量 不相等");
@@ -78,7 +78,7 @@ public class CommonInvoke {
     }
 
     private static Object[] parseParam(String paramStrArrayStr, Class<?>[] paramClazzArray) {
-        String[] paramStrArray = CommonStr.parse2StringArray(paramStrArrayStr);
+        String[] paramStrArray = MyStr.parse2StringArray(paramStrArrayStr);
         if (paramStrArray.length != paramClazzArray.length)
             throw new RuntimeException("param数组" + paramStrArrayStr + "内的param数量 与 Map注册的" + Arrays.toString(paramClazzArray) + "参数数量 不相等");
         Object[] param = new Object[paramClazzArray.length];

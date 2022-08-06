@@ -4,8 +4,8 @@ import java.util.stream.Stream;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import util.CommonIO;
-import util.CommonStr;
+import util.MyIO;
+import util.MyStr;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,14 +24,14 @@ class SolutionTest {
     @ParameterizedTest
     @MethodSource("implProvider")
     void implTest(Solution impl) {
-        assertEquals(4, impl.arrayNesting(CommonStr.parse2IntArray(
+        assertEquals(4, impl.arrayNesting(MyStr.parse2IntArray(
                 "[5,4,0,3,1,6,2]")));
-        assertEquals(2, impl.arrayNesting(CommonStr.parse2IntArray(
+        assertEquals(2, impl.arrayNesting(MyStr.parse2IntArray(
                 "[0,2,1]")));
-        assertEquals(20706, impl.arrayNesting(CommonStr.parse2IntArray(
-                CommonIO.readResourceAsString("/input/leetcode/q565/intArray1.input"))));
-        assertEquals(100000, impl.arrayNesting(CommonStr.parse2IntArray(
-                CommonIO.readResourceAsString("/input/leetcode/q565/intArray2.input"))));
+        assertEquals(20706, impl.arrayNesting(MyStr.parse2IntArray(
+                MyIO.readResourceAsString("/input/leetcode/q565/intArray1.input"))));
+        assertEquals(100000, impl.arrayNesting(MyStr.parse2IntArray(
+                MyIO.readResourceAsString("/input/leetcode/q565/intArray2.input"))));
     }
 
 }
