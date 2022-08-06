@@ -13,7 +13,7 @@ import java.util.Queue;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class BFS implements Solution {
+class BFS implements Solution {
     @Override
     public TreeNode addOneRow(TreeNode root, int val, int depth) {
         if (depth == 1) return new TreeNode(val, root, null);

@@ -9,7 +9,7 @@ import java.util.*;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class Topology implements Solution {
+class Topology implements Solution {
     @Override
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         List<List<Integer>> edges = new ArrayList<>(numCourses);

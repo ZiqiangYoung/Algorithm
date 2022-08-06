@@ -7,7 +7,7 @@ package leetcode.q592;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class Simulation implements Solution {
+class Simulation implements Solution {
     @Override
     public String fractionAddition(String expression) {
         long numerator = 0, denominator = 1, gcd;

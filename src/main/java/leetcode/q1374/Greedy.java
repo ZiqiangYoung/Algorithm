@@ -7,7 +7,7 @@ package leetcode.q1374;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class Greedy implements Solution {
+class Greedy implements Solution {
     @Override
     public String generateTheString(int n) {
         return "a".repeat(n - 1).concat(n % 2 == 0 ? "b" : "a");

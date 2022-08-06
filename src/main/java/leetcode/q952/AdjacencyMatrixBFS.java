@@ -11,7 +11,7 @@ import java.util.*;
  * @deprecated 该邻接矩阵的解法在规模较大时会被Leetcode判定OOM
  **/
 @SuppressWarnings("DeprecatedIsStillUsed")
-public class AdjacencyMatrixBFS implements Solution {
+class AdjacencyMatrixBFS implements Solution {
     int          length;
     int[][]      adjacencyMatrix;
     Set<Integer> unVisitedVertexSet;

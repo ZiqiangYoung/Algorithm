@@ -10,7 +10,7 @@ import java.util.List;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class DP implements Solution {
+class DP implements Solution {
     @Override
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> ans = new ArrayList<>(numRows);

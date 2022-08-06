@@ -9,7 +9,7 @@ import leetcode.common.TreeNode;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class DFS implements Solution {
+class DFS implements Solution {
     @Override
     public TreeNode addOneRow(TreeNode root, int val, int depth) {
         if (root == null) return null;

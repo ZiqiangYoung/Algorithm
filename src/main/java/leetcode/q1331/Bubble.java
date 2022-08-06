@@ -9,7 +9,7 @@ import java.util.*;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class Bubble implements Solution {
+class Bubble implements Solution {
     @Override
     public int[] arrayRankTransform(int[] arr) {
         int[] sortedArr = new int[arr.length];

@@ -9,7 +9,7 @@ import java.util.*;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class Greedy implements Solution {
+class Greedy implements Solution {
     @Override
     public List<Integer> minSubsequence(int[] nums) {
         int current = 0, sum = 0;

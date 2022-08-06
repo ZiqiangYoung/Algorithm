@@ -7,7 +7,7 @@ package leetcode.q1184;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class Traverse implements Solution {
+class Traverse implements Solution {
     @Override
     public int distanceBetweenBusStops(int[] distance, int start, int destination) {
         int sum = 0, dis = 0;
