@@ -11,12 +11,12 @@ class DP implements Solution {
     @Override
     public int climbStairs(int n) {
         if (n < 4) return n;
-        int a = 2, b = 3, t;
-        for (int i = 3; i < n; i++) {
-            t = b;
-            b = a + b;
-            a = t;
+        int a, b = 2, c = 3;
+        for (int i = 4; i <= n; i++) {
+            a = b;
+            b = c;
+            c = a + b;
         }
-        return b;
+        return c;
     }
 }
