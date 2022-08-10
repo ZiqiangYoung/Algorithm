@@ -12,7 +12,7 @@ import java.util.Queue;
  * @version V0.1.0
  **/
 @SuppressWarnings("DuplicatedCode")
-public class DFS_adjacencyList implements Solution {
+class DFS_adjacencyList implements Solution {
     @Override
     public int reachableNodes(int n, int[][] edges, int[] restricted) {
         boolean[] vis = new boolean[n];

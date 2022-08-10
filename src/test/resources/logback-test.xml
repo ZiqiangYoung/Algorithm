@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Created by ZiqiangYoung on 2022/8/10
+ *
+ * @version V0.1.0
+ * @author ZiqiangYoung,ziqiangyoung@foxmail.com-->
+<configuration>
+  <property name="pattern-color"
+            value="%yellow(%d{HH:mm:ss.SSS}) [%4.4thread] %highlight(%-5level) %green(%-23logger{23}): %msg%n"/>
+
+  <appender name="CONSOLE-COLOR" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>${pattern-color}</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="java.sql">
+    <level value="DEBUG"/>
+  </logger>
+
+  <logger name="org.apache.ibatis">
+    <level value="INFO"/>
+  </logger>
+
+  <root level="DEBUG">
+    <appender-ref ref="CONSOLE-COLOR"/>
+  </root>
+</configuration>

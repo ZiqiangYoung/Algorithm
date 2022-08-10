@@ -7,7 +7,7 @@ package leetcode.q198;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class DP implements Solution {
+class DP implements Solution {
     @Override
     public int rob(int[] nums) {
         if (nums.length == 1) return nums[0];
