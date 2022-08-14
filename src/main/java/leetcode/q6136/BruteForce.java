@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 不过实际上就算可以重叠，也不必将对应下标全部存储，只需要缓存count，相乘即为所求。
  **/
 @Deprecated
-class Violate implements Solution {
+class BruteForce implements Solution {
     @Override
     public int arithmeticTriplets(int[] nums, int diff) {
         Map<Integer, Set<Integer>> map = new HashMap<>(nums.length);

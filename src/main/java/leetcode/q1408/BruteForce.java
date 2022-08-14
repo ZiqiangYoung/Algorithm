@@ -10,7 +10,7 @@ import java.util.List;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-class Violate implements Solution {
+class BruteForce implements Solution {
     @Override
     public List<String> stringMatching(String[] words) {
         List<String> list = new ArrayList<>();

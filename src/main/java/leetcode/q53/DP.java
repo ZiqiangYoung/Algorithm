@@ -7,7 +7,7 @@ package leetcode.q53;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-public class DP implements Solution {
+class DP implements Solution {
     @Override
     public int maxSubArray(int[] nums) {
         int pre = 0, max = nums[0];

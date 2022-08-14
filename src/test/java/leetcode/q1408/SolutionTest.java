@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  **/
 class SolutionTest {
     private static Stream<Solution> implProvider() {
-        return Stream.of(new Violate());
+        return Stream.of(new BruteForce());
     }
 
     @ParameterizedTest
