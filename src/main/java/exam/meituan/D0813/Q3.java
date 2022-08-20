@@ -1,4 +1,4 @@
-package exam.meituan;
+package exam.meituan.D0813;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ import java.util.Scanner;
  * @author ZiqiangYoung, ziqiangyoung@foxmail.com
  * @version V0.1.0
  **/
-class D0813Q3 {
+class Q3 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = Integer.parseInt(scanner.nextLine());
